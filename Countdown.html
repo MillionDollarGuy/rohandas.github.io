@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlled YouTube Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333;
+            color: #fff;
+        }
+        .video-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <h1>Controlled YouTube Video</h1>
+        <div id="player"></div>
+    </div>
+
+    <script>
+        // Load the IFrame Player API code asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Create a YouTube player instance
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '315',
+                width: '560',
+                videoId: 'eXpLikAi3X4?si=m7ZBVW3Gjf_U8jlX', // Replace with your video ID
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        // Set volume when player is ready
+        function onPlayerReady(event) {
+            event.target.setVolume(50); // Set volume (0-100)
+        }
+    </script>
+</body>
+</html>
